@@ -1,26 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Grid from './grid/Grid.js';
+import appData from './appData.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    let twoDArr = [];
+    for (let i = 0; i < appData.content.grid.height; i++) {
+      let row = [];
+      for (let j = 0; j < appData.content.grid.width; j++) {
+        row.push(
+          <span>a</span>
+        );
+      }
+      twoDArr.push(row);
+    }
+    console.log(twoDArr);
+    return (
+      <div className="App">
+        <Grid array={twoDArr} size={5} />
+      </div>
+    );
+  }
 }
 
 export default App;
