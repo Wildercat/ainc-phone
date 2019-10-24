@@ -2,10 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Grid from './Grid.js';
-import appData from './appData.json';
+import appData from './tttappData.json';
+import { thisExpression } from '@babel/types';
 
 
-class App extends React.Component {
+class TicTacToe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,4 +94,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default TicTacToe;

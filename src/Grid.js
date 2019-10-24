@@ -11,7 +11,7 @@ class Col extends React.Component {
             width: dims.width * dims.size / dims.width + 'em'
         }
         return (
-            <div className='col p-0 border' style={styling}>
+            <div onClick={this.props.onClick} data-j={this.props.idx} className='col p-0 border grid_tile' style={styling}>
                 {this.props.children}
             </div>
         );
@@ -25,7 +25,7 @@ class Row extends React.Component {
     makeCols() {        
         return this.props.array.map((item, idx) => {
             return (
-                <Col key={idx} dims={this.props.dims}>
+                <Col onClick={() => this.props.onClick(idx)} idx={idx} key={idx} dims={this.props.dims}>
                     {item}
                     </Col>
             );
@@ -33,7 +33,7 @@ class Row extends React.Component {
     }
     render() {
         return (
-            <div className='row p-0' style={{width: this.props.dims.width * this.props.dims.size + 'em'}}>
+            <div data-i={this.props.idx} className='row p-0' style={{width: this.props.dims.width * this.props.dims.size + 'em'}}>
                 {this.makeCols()}
             </div>
         )
@@ -54,7 +54,7 @@ class Grid extends React.Component {
     makeRows() {
         return this.props.array.map((item, idx) => {
             return (
-                <Row key={idx} dims={this.dims} array={item} />
+                <Row onClick={(j) => this.props.onClick(idx,j)} key={idx} idx={idx} dims={this.dims} array={item} />
             )
         })
         
